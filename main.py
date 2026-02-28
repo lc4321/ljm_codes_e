@@ -152,7 +152,7 @@ def main() -> int:
     split_df = data.split_assignments.copy()
     split_excel = write_excel(excel_dir / "data_splits.xlsx", {"splits": split_df})
 
-    # Save run info to Excel as well (方便在其他电脑复现/复绘)
+    # Save run info to Excel 
     cfg_df = pd.DataFrame([{"key": k, "value": v} for k, v in cfg.__dict__.items()])
     data_df = pd.DataFrame([{"key": k, "value": v} for k, v in data_summary.items()])
     write_excel(excel_dir / "run_info.xlsx", {"config": cfg_df, "data_summary": data_df})
