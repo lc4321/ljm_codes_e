@@ -7,7 +7,7 @@ from typing import Optional, Sequence
 @dataclass(frozen=True)
 class ExperimentConfig:
     # Data
-    data_path: str = "data/factor1016.xlsx"
+    data_path: str = "data/The sample data used in the study.xlsx"
     id_column: Optional[str] = None  # None => use first column
     target_column: Optional[str] = None  # None => use last column
     test_size: float = 0.12
