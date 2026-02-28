@@ -18,7 +18,7 @@
 
 ## 数据
 
-默认使用 `data/factor1016.xlsx`。
+默认使用 `data/The sample data used in the study.xlsx`。
 
 ## 输出结构（每次运行一个 run_id）
 
