@@ -19,9 +19,7 @@ class EnsembleResult:
 
 
 def _stack_preds(predictions_by_model: Dict[str, pd.DataFrame], id_col: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """
-    Align by id and return (ids, y_true, X_meta) where X_meta columns are model preds.
-    """
+   
     model_names = list(predictions_by_model.keys())
     base = predictions_by_model[model_names[0]].copy()
     base = base[[id_col, "y_true", "y_pred"]].rename(columns={"y_pred": model_names[0]})
@@ -55,10 +53,10 @@ def weighted_average_ensemble(
     predictions_by_split: Dict[str, pd.DataFrame] = {}
 
     for split in ["train", "val", "test"]:
-        # Align ids across models
+      
         preds_for_split = {m: base_predictions[m][split] for m in weights.keys()}
         ids, y_true, X_meta = _stack_preds(preds_for_split, id_col=id_col)
-        # Weighted sum across columns in model order
+        
         model_names = list(weights.keys())
         w = np.array([weights[m] for m in model_names], dtype=np.float64).reshape(1, -1)
         y_pred = (X_meta * w).sum(axis=1)
