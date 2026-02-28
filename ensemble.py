@@ -104,7 +104,7 @@ def ridge_stacking_ensemble(
     metrics_by_split["train"] = regression_metrics(y_tr, y_pred_tr)
     predictions_by_split["train"] = pd.DataFrame({id_col: ids_tr, "y_true": y_tr, "y_pred": y_pred_tr})
 
-    # val (ids from first val df)
+    # val
     ids_val = val_preds[model_names[0]][id_col].to_numpy()
     y_pred_val = ridge.predict(X_val)
     metrics_by_split["val"] = regression_metrics(y_val, y_pred_val)
