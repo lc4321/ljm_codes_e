@@ -1,34 +1,34 @@
 # codes_e_new
 
-预测钢渣碳化效率：多模型训练 + 集成（OE）。
+Predict steel-slag carbonation efficiency with multi-model training and an optimized ensemble (OE).
 
-## 快速开始
+## Quick Start
 
-1) 进入目录：
+1) Enter the project directory:
 
 `cd codes_e_new`
 
-2) 运行一次完整实验（会生成 `runs/`，并且在runs目录下生成一个新的 run 目录）：
+2) Run a full experiment (creates `runs/` and a new run directory under it):
 
 `python main.py`
 
-3) 快速跑通（epoch很小，用于验证代码是否跑通）：
+3) Quick sanity run (small number of epochs, used to verify the pipeline works end-to-end):
 
 `python main.py --quick`
 
-## 数据
+## Data
 
-默认使用 `data/The sample data used in the study.xlsx`。
+By default, the project uses `data/The sample data used in the study.xlsx`.
 
-## 输出结果（每一次运行，都会在runs目录下生成一个 run_id）
+## Outputs (a new `run_id` is created under `runs/` for each run)
 
 `runs/<run_id>/`
-- `config.json`：本次运行的完整配置
-- `models/`：每个模型的 best checkpoint
-- `excel/`：所有生成的数据，可用于绘制图形以及用于模型效果分析对比等，包含指标、预测、训练历史、集成机制等
-- `figures/`：绘制出的评估图，包括loss、R2、散点图、残差图、指标对比等
+- `config.json`: Full configuration used in this run
+- `models/`: Best checkpoints for each model
+- `excel/`: All exported tables used for re-plotting and analysis (metrics, predictions, training history, ensemble mechanism, etc.)
+- `figures/`: Evaluation figures (loss, R², scatter plots, residual diagnostics, metric comparisons, etc.)
 
-## 重要原则：避免信息泄漏
+## Key Principle: Avoid Data Leakage
 
-- `train/val` 用于训练与早停（模型训练与调参）
-- `test` 用于最终泛化评估与分析，不参与调参
+- `train/val` are used for training and early stopping (model selection and tuning)
+- `test` is only used for final generalization evaluation and analysis, and must not be used for tuning
