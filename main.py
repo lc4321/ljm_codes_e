@@ -292,7 +292,7 @@ def main() -> int:
     for split in ["train", "val", "test"]:
         plot_metrics_comparison(metrics_df, figures_dir, split=split)
 
-    # Per-model scatter + residual diagnostics (all models including ensembles)
+    
     for model_name in all_preds.keys():
         for split in ["train", "val", "test"]:
             dfp = all_preds[model_name][split]
@@ -325,7 +325,7 @@ def main() -> int:
                 title=f"{model_name} ({split}) - Residual Q-Q Plot",
             )
 
-    # 5) OE mechanism export (Excel only)
+    
     for ens_name, ens in ensemble_results.items():
         if "weights" in ens.extra:
             weights = {k: float(ens.extra["weights"][k]) for k in models_selected.keys()}
@@ -381,7 +381,7 @@ def main() -> int:
 
         write_excel(excel_dir / f"oe_mechanism_{ens_name}.xlsx", {"OE": mech_df, "meta": meta_df})
 
-    print("\n✅ 运行完成")
+    print("\n✅ END!")
     print(f"- run_dir: {run_dir}")
     print(f"- metrics: {metrics_excel}")
     print(f"- predictions: {preds_excel}")
