@@ -19,7 +19,4 @@ __pycache__/
 # Experiment outputs (large, reproducible)
 runs/
 
-# Document exports (Word)
-*.doc
-*.docx
 
