@@ -110,7 +110,7 @@ def train_one_model(
             optimizer.step()
             train_losses.append(loss.detach().cpu().item())
 
-        # Evaluate on full train/val (original scale R2)
+        # Evaluate on full train/val 
         train_pred_scaled = _predict_scaled(model, data.X_train_scaled, device)
         val_pred_scaled = _predict_scaled(model, data.X_val_scaled, device)
         train_pred_raw = data.inverse_transform_y(train_pred_scaled)
