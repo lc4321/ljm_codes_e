@@ -6,10 +6,7 @@ from pathlib import Path
 
 
 def _ensure_tmpdir() -> None:
-    """
-    Ensure a usable temp dir exists before importing heavy deps like scipy/sklearn.
-    Falls back to a local `.tmp/` under project root when system temp is unavailable.
-    """
+   
     try:
         import tempfile
 
@@ -224,8 +221,7 @@ def main() -> int:
             name="Optimized_Ensemble_Ridge",
         )
 
-    # Save OE "models" into models/ as both JSON and PKL (凑齐 6 个模型文件)
-    # 说明：OE 本质是线性组合器，不是 PyTorch 网络权重，因此以参数字典形式落盘。
+    
     import pickle
 
     for ens_name, ens in ensemble_results.items():
