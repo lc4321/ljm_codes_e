@@ -101,10 +101,6 @@ class ResidualMLP(nn.Module):
 
 
 class FeatureGateNet(nn.Module):
-    """
-    输入 -> 生成 gate（0~1） -> 按维度加权输入 -> MLP 预测
-    直观上更容易解释“模型在关注哪些特征维度”。
-    """
 
     def __init__(
         self,
@@ -130,7 +126,6 @@ class FeatureGateNet(nn.Module):
 
 class WideDeepNet(nn.Module):
     """
-    Wide（线性）+ Deep（非线性）两路相加：
       y = Linear(x) + MLP(x)
     """
 
